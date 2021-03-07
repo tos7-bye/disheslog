@@ -27,7 +27,7 @@ RSpec.describe "StaticPages", type: :system do
     end
 
     it "正しいタイトルが表示されることを確認" do
-      expect(page).to have_title full_title("disheslogとは?")
+      expect(page).to have_title full_title("disheslogとは？")
     end
   end
 
