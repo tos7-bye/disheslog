@@ -2,6 +2,40 @@ require 'rails_helper'
 
 RSpec.describe "Users", type: :system do
   let!(:user) { create(:user) }
+  let!(:admin_user) { create(:user, :admin) }
+
+  describe "ユーザー一覧ページ" do
+    context "管理者ユーザーの場合" do
+      it "ぺージネーション、自分以外のユーザーの削除ボタンが表示されること" do
+        create_list(:user, 30)
+        login_for_system(admin_user)
+        visit users_path
+        expect(page).to have_css "div.pagination"
+        User.paginate(page: 1).each do |u|
+          expect(page).to have_link u.name, href: user_path(u)
+          expect(page).to have_content "#{u.name} | 削除" unless u == admin_user
+        end
+      end
+    end
+
+    context "管理者ユーザー以外の場合" do
+      it "ぺージネーション、自分のアカウントのみ削除ボタンが表示されること" do
+        create_list(:user, 30)
+        login_for_system(user)
+        visit users_path
+        expect(page).to have_css "div.pagination"
+        User.paginate(page: 1).each do |u|
+          expect(page).to have_link u.name, href: user_path(u)
+          if u == user
+            expect(page).to have_content "#{u.name} | 削除"
+          else
+            expect(page).not_to have_content "#{u.name} | 削除"
+          end
+        end
+      end
+    end
+  end
+
   describe "ユーザー登録ページ" do
     before do
       visit signup_path
@@ -45,7 +79,6 @@ RSpec.describe "Users", type: :system do
       visit user_path(user)
       click_link "プロフィール編集"
     end
-
     context "ページレイアウト" do
       it "正しいタイトルが表示されることを確認" do
         expect(page).to have_title full_title('プロフィール編集')
@@ -74,8 +107,15 @@ RSpec.describe "Users", type: :system do
       expect(page).to have_content 'メールアドレスは不正な値です'
       expect(user.reload.email).not_to eq ""
     end
-  end
 
+    context "アカウント削除処理", js: true do
+      it "正しく削除できること" do
+        click_link "アカウントを削除する"
+        page.driver.browser.switch_to.alert.accept
+        expect(page).to have_content "自分のアカウントを削除しました"
+      end
+    end
+  end
 
   describe "プロフィールページ" do
     context "ページレイアウト" do
@@ -99,6 +139,4 @@ RSpec.describe "Users", type: :system do
       end
     end
   end
-
-
 end
