@@ -7,8 +7,8 @@ RSpec.describe "StaticPages", type: :system do
         visit root_path
       end
 
-      it "disheslogの文字列が存在することを確認" do
-        expect(page).to have_content "disheslog"
+      it "Disheslogの文字列が存在することを確認" do
+        expect(page).to have_content "Disheslog"
       end
 
       it "正しいタイトルが表示されることを確認" do
@@ -22,12 +22,12 @@ RSpec.describe "StaticPages", type: :system do
       visit about_path
     end
 
-    it "disheslogとは？の文字列が存在することを確認" do
-      expect(page).to have_content 'disheslogとは？'
+    it "Disheslogとは？の文字列が存在することを確認" do
+      expect(page).to have_content 'Disheslogとは？'
     end
 
     it "正しいタイトルが表示されることを確認" do
-      expect(page).to have_title full_title("disheslogとは？")
+      expect(page).to have_title full_title("Disheslogとは？")
     end
   end
 
