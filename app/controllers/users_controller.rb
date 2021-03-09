@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   before_action :logged_in_user, only: [:index, :show, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update]
 
@@ -60,6 +59,7 @@ class UsersController < ApplicationController
   end
 
   private
+
   # ユーザー新規作成時に許可する属性
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
@@ -77,5 +77,5 @@ class UsersController < ApplicationController
     flash[:danger] = "このページへはアクセスできません"
     redirect_to(root_url)
     end
-  end  
+  end
 end
