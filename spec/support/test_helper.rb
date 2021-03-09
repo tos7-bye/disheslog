@@ -16,7 +16,6 @@ def login_for_system(user)
   click_button "ログイン"
 end
 
-
 def login_remember(user)
   post login_path, params: { session: { email: user.email,
                                         password: user.password,
@@ -34,4 +33,3 @@ def current_user
     end
   end
 end
-

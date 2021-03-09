@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :dishes, dependent: :destroy
+
   attr_accessor :remember_token
 
   before_save :downcase_email
@@ -13,11 +15,12 @@ class User < ApplicationRecord
   class << self
     # 渡された文字列のハッシュ値を返す
     def digest(string)
-      cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
-                                                      BCrypt::Engine.cost
+      cost = ActiveModel::SecurePassword.min_cost ?
+        BCrypt::Engine::MIN_COST :
+        BCrypt::Engine.cost
         BCrypt::Password.create(string, cost: cost)
     end
-  
+
     # ランダムなトークンを返す
     def new_token
       SecureRandom.urlsafe_base64
@@ -41,8 +44,14 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, nil)
   end
 
+  # フィード一覧を取得
+  def feed
+    Dish.where("user_id = ?", id)
+  end
+
   private
-    def downcase_email
-      self.email = email.downcase
-    end
+
+  def downcase_email
+    self.email = email.downcase
+  end
 end
