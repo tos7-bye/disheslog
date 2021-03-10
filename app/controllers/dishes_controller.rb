@@ -52,7 +52,7 @@ class DishesController < ApplicationController
       params.require(:dish).permit(
         :name, :description, :popularity,
         :reference, :required_time,
-        :portion, :tips, :cook_memo
+        :portion, :tips, :cook_memo, :picture
       )
     end
 

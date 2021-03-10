@@ -50,3 +50,7 @@ Airbnb/DefaultScope:
 
 Style/MultilineTernaryOperator:
   Enabled: false
+
+Lint/UselessAssignment:
+  Exclude:
+    - 'app/uploaders/*'
