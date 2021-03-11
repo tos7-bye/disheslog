@@ -54,3 +54,9 @@ Style/MultilineTernaryOperator:
 Lint/UselessAssignment:
   Exclude:
     - 'app/uploaders/*'
+
+Airbnb/RiskyActiverecordInvocation:
+  Enabled: false
+
+Style/TrailingCommaInArrayLiteral:
+  Enabled: false
