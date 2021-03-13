@@ -7,6 +7,8 @@ class User < ApplicationRecord
 
   has_many :favorites, dependent: :destroy
 
+  has_many :notifications, dependent: :destroy
+
   has_many :following, through: :active_relationships, source: :followed
   # 受動的なフォロー
   has_many :passive_relationships, class_name: "Relationship",
