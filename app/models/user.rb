@@ -9,6 +9,8 @@ class User < ApplicationRecord
 
   has_many :notifications, dependent: :destroy
 
+  has_many :lists, dependent: :destroy
+
   has_many :following, through: :active_relationships, source: :followed
   # 受動的なフォロー
   has_many :passive_relationships, class_name: "Relationship",
@@ -101,6 +103,21 @@ class User < ApplicationRecord
   # 現在のユーザーがお気に入り登録してたらtrueを返す
   def favorite?(dish)
     !Favorite.find_by(user_id: id, dish_id: dish.id).nil?
+  end
+
+  # 料理をリストに登録する
+  def list(dish)
+    List.create!(user_id: dish.user_id, dish_id: dish.id, from_user_id: id)
+  end
+
+  # 料理をリストから解除する
+  def unlist(list)
+    list.destroy
+  end
+
+  # 現在のユーザーがリスト登録してたらtrueを返す
+  def list?(dish)
+    !List.find_by(dish_id: dish.id, from_user_id: id).nil?
   end
 
   private
