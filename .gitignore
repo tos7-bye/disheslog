@@ -28,6 +28,6 @@
 # Ignore gems
 /vendor/bundle
 /vendor/.keep
-
+/.env
 # Ignore unnecessary pictures
 /public/uploads/*
