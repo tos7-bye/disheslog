@@ -60,3 +60,12 @@ Airbnb/RiskyActiverecordInvocation:
 
 Style/TrailingCommaInArrayLiteral:
   Enabled: false
+
+Layout/FirstArrayElementLineBreak:
+  Enabled: false
+
+Layout/MultilineArrayBraceLayout:
+  Enabled: false
+
+Layout/MultilineHashBraceLayout:
+  Enabled: false
