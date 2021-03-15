@@ -53,6 +53,8 @@ gem "mini_magick",             '>= 4.9.4'
 
 gem 'fog-aws'
 
+gem 'ransack'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'rspec-rails', '~> 4.0.0.beta2'
