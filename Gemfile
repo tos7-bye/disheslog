@@ -53,6 +53,7 @@ gem "mini_magick",             '>= 4.9.4'
 
 gem 'fog-aws'
 
+
 gem 'ransack'
 
 group :development, :test do
