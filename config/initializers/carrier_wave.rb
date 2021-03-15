@@ -2,7 +2,6 @@ require 'carrierwave/storage/abstract'
 require 'carrierwave/storage/file'
 require 'carrierwave/storage/fog'
 
-
 CarrierWave.configure do |config|
   if Rails.env.production? # 本番環境の場合はS3へアップロード
     config.storage :fog

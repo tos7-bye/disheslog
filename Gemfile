@@ -43,6 +43,8 @@ gem 'faker'
 
 gem 'jquery-rails', '4.3.1'
 
+gem "aws-sdk-s3"
+
 gem 'will_paginate',           '3.1.7'
 
 gem 'bootstrap-will_paginate', '1.0.0'
@@ -53,6 +55,7 @@ gem "mini_magick",             '>= 4.9.4'
 
 gem 'fog-aws'
 
+gem 'dotenv-rails'
 
 gem 'ransack'
 
