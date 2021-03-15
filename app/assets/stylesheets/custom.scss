@@ -1,3 +1,5 @@
+$main-magenta: #dd356e ;
+$main-yellow: #fee856 ;
 
 // ミックスイン
 @mixin box_sizing {
@@ -26,12 +28,39 @@
 .fh5co-nav .top-menu {
   padding: 18px 0;
 }
+
+#fh5co -portfolio {
+  padding: 0;
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  h3 {
+    text-align: left;
+  }
+}
  #logo  {
   img {
     max-width: 100%;
     height: auto;
     box-sizing: border-box;
   }
+}
+
+// スマホ用：ヘッダーメニューが横棒三本になるところを境にロゴを拡大
+@media screen and (max-width: 768px) {
+  #logo  {
+    img {
+      max-width: 400%;
+      height: auto;
+      box-sizing: border-box;
+    }
+  }
+}
+
+// スマホ閲覧時、横棒三本をページ上部に固定
+.fh5co-nav-toggle {
+  position: fixed;
 }
 
 // ロゴの上下位置調整
@@ -106,6 +135,14 @@ input {
 }
 
 .account-edit {
+  margin-top: 20px;
+}
+
+.account-edit {
+  margin-top: 20px;
+}
+
+.account-delete {
   margin-top: 20px;
 }
 
@@ -373,4 +410,50 @@ a.list, a.unlist {
 
 .list-dish-description {
   margin-bottom: 20px;
+}
+
+// 料理一覧
+.dish-user {
+  text-align: right;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+h3.dish-name {
+  font-size: 20px;
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.dish-description {
+  margin-top: 10px;
+}
+
+// お気に入り
+.cook-user {
+ margin-bottom: 20px;
+}
+
+// リスト
+.list-button {
+ margin-bottom: 20px;
+}
+
+// ログ
+.add-cooklog {
+ font-weight: bold;
+}
+
+.btn-record {
+  margin-top: 3em;
+  color: black;
+  background-color: $main-yellow;
+  border-color: $main-yellow;
+}
+
+// 「CSV出力」ボタン
+.btn-csv {
+  color: black;
+  background-color: palegreen;
+  border-color: palegreen;
 }
