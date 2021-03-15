@@ -1,14 +1,16 @@
-unless Rails.env.development? || Rails.env.test?
-CarrierWave.configure do |config|
-  CarrierWave.configure do |config|
-    config.fog_credentials = {
-      provider: 'AWS',
-      aws_access_key_id: ['S3_ACCESS_KEY'],
-      aws_secret_access_key: ['S3_SECRET_KEY'],
-      region: ['S3_REGION']
-    }
+require 'carrierwave/storage/abstract'
+require 'carrierwave/storage/file'
+require 'carrierwave/storage/fog'
 
-    config.fog_directory  = ['S3_BUCKET']
-    config.cache_storage = :fog
-  end
+CarrierWave.configure do |config|
+  config.storage :fog
+  config.fog_provider = 'fog/aws'
+  config.fog_directory  = ['S3_BUCKET']
+  config.fog_credentials = {
+    provider: 'AWS',
+    aws_access_key_id: ENV['S3_ACCESS_KEY'],
+    aws_secret_access_key: ENV['S3_SECRET_KEY'],
+    region: ENV['S3_REGION'],
+    path_style: true
+  }
 end
