@@ -11,7 +11,7 @@
             </div>
           </div>
           <div class="col-md-8">
-            <h4 class="show-user-name"><%= @user.name %></h4>　<%= @user.sex %>
+            <h4 class="show-user-name"><%= @user.name %></h4><%= @user.sex %>
             <div class="show-user-introduction">
               <%= @user.introduction %>
             </div>
@@ -47,5 +47,4 @@
         <p><%= link_to "みんなの料理をCSV出力", dishes_path(format: :csv), class: "btn btn-primary btn-lg btn-demo btn-csv" %></p>
       </div>
     </div>
-  </div>
 </div>

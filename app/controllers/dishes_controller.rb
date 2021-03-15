@@ -2,8 +2,13 @@ class DishesController < ApplicationController
   before_action :logged_in_user
   before_action :correct_user, only: [:edit, :update]
 
+  def index
+    @log = Log.new
+  end
+
   def new
     @dish = Dish.new
+    @dish.ingredients.build
   end
 
   def create
@@ -55,7 +60,7 @@ class DishesController < ApplicationController
       params.require(:dish).permit(
         :name, :description, :popularity,
         :reference, :required_time,
-        :portion, :tips, :cook_memo, :picture
+        :portion, :tips, :cook_memo, :picture, ingredients_attributes: [:id, :name, :quantity]
       )
     end
 
