@@ -69,3 +69,6 @@ Layout/MultilineArrayBraceLayout:
 
 Layout/MultilineHashBraceLayout:
   Enabled: false
+
+Airbnb/ContinuationSlash:
+  Enabled: false
