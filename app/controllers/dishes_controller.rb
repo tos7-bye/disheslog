@@ -4,6 +4,15 @@ class DishesController < ApplicationController
 
   def index
     @log = Log.new
+
+    # CSV出力時のファイル名指定
+    respond_to do |format|
+      format.html
+      format.csv {
+        send_data render_to_string,
+                  filename: "みんなの料理一覧_#{Time.current.strftime('%Y%m%d_%H%M')}.csv"
+      }
+    end
   end
 
   def new
@@ -60,7 +69,8 @@ class DishesController < ApplicationController
       params.require(:dish).permit(
         :name, :description, :popularity,
         :reference, :required_time,
-        :portion, :tips, :cook_memo, :picture, ingredients_attributes: [:id, :name, :quantity])
+        :portion, :tips, :cook_memo, :picture, ingredients_attributes: [:id, :name, :quantity]
+      )
     end
 
     def correct_user
