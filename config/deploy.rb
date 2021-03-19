@@ -5,10 +5,10 @@ set :application, "disheslog"
 # cloneするgitのレポジトリ
 set :repo_url, "git@github.com:tos7-bye/disheslog.git"
 
-Default branch is :master
-# ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
+# deployするブランチ。デフォルトはmasterなのでなくても可。
+set :branch, 'master'
 
-# Default deploy_to directory is /var/www/my_app_name
+# deploy先のディレクトリ。 
 set :deploy_to, "/var/www/rails/disheslog"
 
 # シンボリックリンクをはるファイル。
