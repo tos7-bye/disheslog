@@ -78,8 +78,19 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+# production:
+#   <<: *default
+#   database: disheslog_production
+#   username: disheslog
+#   password: <%= ENV['DISHESLOG_DATABASE_PASSWORD'] %>
+
+#producton環境の設定を下記のように変更
+
 production:
-  <<: *default
-  database: disheslog_production
-  username: disheslog
-  password: <%= ENV['DISHESLOG_DATABASE_PASSWORD'] %>
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  database: pictweet_production
+  username: root
+  password:
+  socket: /var/lib/mysql/mysql.sock
