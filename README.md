@@ -42,3 +42,5 @@ https://disheslog.herokuapp.com/
 　Ruby on Rails  
 ■データベース  
 　PostgreSQL  
+
+
