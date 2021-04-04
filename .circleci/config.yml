@@ -19,7 +19,7 @@ jobs:
           command: docker-compose up -d
       - run:
           name: データベースのセットアップ
-          command: docker-compose run web rails db:create db:migrate
+          command: docker-compose run web rails db:create db:migrate RAILS_ENV=test
 
       - run:
           name: RSpecテスト実行
