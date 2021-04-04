@@ -3,6 +3,6 @@ test:
   encoding: unicode
   host: db
   username: postgres
-  password:
+  password: password
   pool: 5
   database: disheslog_test
