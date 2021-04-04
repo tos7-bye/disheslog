@@ -32,6 +32,8 @@ https://disheslog.herokuapp.com/
 ・モデルに対するバリデーション  
 
 # 技術的ポイント  
+・**Docker**を用いたRails開発環境構築  
+・**CircleCI**による自動ビルド  
 ・**RSpec**でModel, Request, Systemテスト記述（計210examples）  
 ・**Ajax**を用いた非同期処理（フォロー/未フォロー、お気に入り登録/未登録などの切り替え表示）  
 ・**Bootstrap**によるレスポンシブ対応  
@@ -69,7 +71,6 @@ https://disheslog.herokuapp.com/
 ![csv出力](https://user-images.githubusercontent.com/71020464/112267422-c7ddb900-8cb8-11eb-9e4f-4f796b0994af.jpg)
 
 # 現在取り組んでいる事
-・Docekr環境構築し、Circleciを使用して自動デプロイ、自動テスト
 ・本番環境をHerokuからAWSへ移行
 
 # ER図
@@ -83,4 +84,4 @@ https://disheslog.herokuapp.com/
 　・静的コード解析：Rubocop  
 ■データベース：PostgreSQL  
 ■ソースコード管理：GitHub  
-■インフラ：Heroku  
+■インフラ：Heroku, Docker  
